@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+      <link rel="stylesheet" type="text/css" href="addasset.css">
+     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+    <!--[if IE]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+</script>
+    <![endif]-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body id="main">
+    
+        <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><img src="images/trackassets2.png" style="height: 25px; width: auto"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="main_page.html">Locate Your Assets</a></li>
+          <li><a href="add_asset.html">Add Assets</a></li>
+          <li><a href="message_us.html">Message Us</a></li>
+         <li><a href="home.html">Logout</a></li>
+
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+	<form no-validate id="my-save-form">
+        <header id="head">
+                </header>
+        <div id="cantfind">Adding Assets Made Easy</div> 
+        <div id="add"><h2><a onclick="myFunction()" href="#" style="text-decoration:none;">Add asset</a></h2></div>
+        
+        
+<div id="addasset">
+
+    <label for="asset_sno">Serial Number</label>
+    <input type="text" name="asset_sno" id="asset_sno" style="width: 75%">
+
+    <label for="asset_type">Asset Type</label>
+      <select name="asset_type" id="asset_type" style="width:75%">
+          <option>Trailer</option>
+          <option>Intermodal Container</option>
+          <option>Coldchain Equipment</option>
+          <option>Heavy Equipment</option>
+          <option>Oil and Gas</option>
+          <option>Maritime</option>
+      </select>
+		<label for="location_source">Source</label>
+<select name="location_source" id="location_source" style="width:75%">
+    <option value="Hyderabad, TS">Hyderabad</option>
+    <option value="Bengaluru, KA">Bengaluru</option>
+    <option value="Delhi, DL">Delhi</option>
+    <option value="Chennai, TN">Chennai</option>
+      </select>
+                        <label for = "location_destination">Destination</label>
+                   <select name="location_destination" id="location_destination" style="width: 75%">
+                       <option value="Pune, MH">Pune</option>
+                       <option value="Mumbai, MH">Mumbai</option>
+                       <option value="Delhi, DL">Delhi</option>
+                       <option value="Chennai, TN">Chennai</option>
+      </select>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</div>	
+
+	</form>
+
+        
+    <script src="assets/plugins/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+              
+        <script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+        <!--myFunction() code-->
+        <script src="formvalidation.js"></script>
+        <script>
+            
+            function myFunction(){
+                
+                var x=document.getElementById('addasset');
+                if(x.style.display === 'none'){
+                    x.style.display = 'block';
+                }else{
+                    x.style.display='none';
+                }
+            }
+       </script> <!--myFunction()code ends here-->
+        
+<!--getData()-->      
+	<script>
+	getDataFromService();
+ function getDataFromService(){
+			$.ajax({
+			type:"GET",
+			  url: "/getData",		  
+			  success: function(response){		  
+				 console.log(response);
+			  }	
+			});
+		}
+		
+  var myJsonObject ={"asset_sno":122222,"asset_type":"Trailer Tracking","location_source":"HYD","location_destination":"DELHI"};
+  
+  function SaveData(formData){
+		$.ajax({
+		  type: "POST",
+		  url: "/saveData",
+		  data: formData,
+		  success: function(response){ alert("success");console.log(response);getDataFromService();}
+		});	
+	}	
+	
+$("#my-save-form").submit(function(){
+    
+	var myFormData = {
+	  asset_sno:$("#asset_sno").val(),
+	  asset_type:$("#asset_type").find(":selected").val(),
+	  location_source:$("#location_source").find(":selected").val(),
+     location_destination: $("#location_destination").find(":selected").val(),
+       	};
+	SaveData(myFormData);
+	console.log(myFormData);
+   return false;
+  
+});
+	</script>
+  </body>
+</html>

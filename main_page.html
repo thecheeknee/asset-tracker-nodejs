@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>main_page</title>
+    <link rel="stylesheet" type="text/css" href="mainpage.css">
+<!--    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">-->
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+    <!--[if IE]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+</script>
+    <![endif]-->
+    <script src="https://use.fontawesome.com/1476cf039d.js"></script>
+
+</head>
+
+<body id="main">
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><img src="images/trackassets2.png" style="height: 25px; width: auto"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="main_page.html">Locate Your Assets</a></li>
+          <li><a href="add_asset.html">Add Assets</a></li>
+          <li><a href="message_us.html">Message Us</a></li>
+         <li><a href="home.html">Logout</a></li>
+
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    <div>
+        <h1 id="logo">Locate Asset</h1> </div>
+   
+    <div id="container">
+        <!--The below code is for search bar-->
+        <form id="find" onsubmit="loadTable()">
+            <div style="width:80%; float:left;">
+                <input type="text" id="searchAssetType" placeholder="search asset types"> </div>
+            <div style="width:20%; float:right;">
+                <input type ="submit" value="Search">
+            </div>
+            <div style="clear:both"></div>
+        </form>
+    
+        <div class="col-sm-8" >
+            <div class="tasst">
+            <table id="assetsTable" class="table table-condensed table-stripped table-bordered">
+             <thead>
+            <tr>
+                
+                <th>Asset Type</th>
+                <th>Asset ID</th>
+                
+            </tr>
+        </thead>
+            </table>
+                </div>
+            </div>    
+        
+        <!--to split screen into three, create a table. I'm using 2 rows (because there are six icons and 3 in each) and three columns-->
+        <table id="split">
+            <tr>
+                <th colspan="3">Asset Type</th>
+                <th>Assets of this type</th>
+                <th>Location Details</th>
+            </tr>
+            <tr>
+                <td>
+                    <!--split this cell three ways to accomodate 3 icons-->
+                    <a href="javascript:void(0)" class="btn-asset-type" data-asset="Trailer"><i class="fa fa-truck fa-4x" aria-hidden="true" id="trailer"></i></a>
+                </td>
+                <td>
+                     <a href="javascript:void(0)" class="btn-asset-type" data-asset="Intermodal Container"><i class="fa fa-bus fa-4x fa-fw" aria-hidden="true" id="intermodal"></i></a>
+                    <td>
+ <a href="javascript:void(0)" class="btn-asset-type" data-asset="Coldchain Equipmement"><i class="fa fa-snowflake-o fa-4x fa-fw" aria-hidden="true" id="coldchain"></i></a>                    </td>
+                    <td id="drillDownAsset"> </td>
+                    <td id="locationDetails"> </td>
+            </tr>
+            <tr>
+                <td>
+                    <!--split this cell three ways to accomodate 3 icons-->
+                     <a href="javascript:void(0)" class="btn-asset-type" data-asset="Heavy Equipment"><i class="fa fa-building-o fa-4x fa-fw" aria-hidden="true" id="heavy"></i></a>
+                </td>
+                <td>
+                     <a href="javascript:void(0)" class="btn-asset-type" data-asset="Oil and Gas"><i class="fa fa-fire fa-4x fa-fw" aria-hidden="true" id="oil_and_gas"></i></a>
+                </td>
+                <td>
+                     <a href="javascript:void(0)" class="btn-asset-type" data-asset="Maritime"><i class="fa fa-ship fa-4x fa-fw" aria-hidden="true" id="maritime"></i></a>
+                </td>
+                <td id="drillDownAsset"> </td>
+                <td> </td>
+            </tr>
+        </table>
+    </div>
+    <!--to get data-->
+    <script src="assets/plugins/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        $(".btn-asset-type").click(function () {
+//            alert($(this).data("asset")); //here asset is asset type 
+            var asset_type = $(this).data("asset");
+            fetchAssetNos(asset_type);
+        });
+        
+        //to highlight button
+               $(document).ready(function(){
+    $('#trailer').click(function(){
+    $('#trailer').attr('src', 'images/assettypes/trailer-wc.png');
+    });
+})
+                    
+  $(document).ready(function(){
+    $('#intermodal').click(function(){
+    $('#intermodal').attr('src', 'images/assettypes/intermodal-wc.png');
+    
+    });
+    $('#trailer').attr('src', 'images/assettypes/trailer-bfc.png');
+      
+}),          
+        
+        
+            $(document).ready(function(){
+    $('#coldchain').click(function(){
+    $('#coldchain').attr('src', 'images/assettypes/coldchain-wc.png');
+    });
+      
+})
+
+  fetchAssetNos("Trailer");
+        function fetchAssetNos(asset) {
+            var getUrl = "/getAssetData/" + asset;
+            $.get(getUrl, function (data) {
+              console.log(data);
+                //                alert("Load was performed.");
+                if (data.length <= 0) {
+                    $("#drillDownAsset").html("no records found for this type.");
+                }
+                else {
+                    $("#drillDownAsset").html("");
+                    for (var i = 0; i < data.length; i++) {
+                        var dynamicEl = "<a href='javascript:void(0)' class='btn-asset-sno btn btn-block' data-id=" + data[i]._id + ">" + data[i].asset_sno + "</a>"
+                            //dynamically getting asset_snos and making them clickable
+                        $("#drillDownAsset").append(dynamicEl);
+                    }
+                    $(".btn-asset-sno").click(locationDetailsEvent);
+                    $(".btn-asset-sno:first").trigger("click");
+                }
+            });
+        }
+
+        function locationDetailsEvent() {
+            var objectId = $(this).data("id");
+            console.log(objectId);
+            $(this).addClass("active").siblings().removeClass("active");
+            var locationDetailsElement = $("#locationDetails")
+            $.ajax({
+                type: "GET"
+                , url: "/getData/" + objectId
+                , success: function (response) {
+                    console.log(response);
+                    console.log(response.location_destination);
+                    var elemnt = "Source: " + response.location_source;
+                    elemnt +="<br>"+"Destination: " + response.location_destination;
+                    elemnt += "<br>"+"<a href='map6.html' class='modal-content-animate'>"+"Know current location"+"</a>";
+                    locationDetailsElement.html(elemnt);
+                    localStorage.setItem("source",response.location_source);
+                    localStorage.setItem("dest",response.location_destination);
+                }
+            });
+        }
+        
+       
+    </script>
+    
+    <script>
+        function loadTable(){
+            var assetType = $("#searchAssetType").val();
+            
+            $ajax({
+               type: "GET",
+                url: "/getData",
+                dataType: JSON,
+                success: function(JSON){
+                $(JSON).find( asset_sno );
+                var foundAsset = $(this).find( asset_sno );
+                var newrow = '<tr><td>'+ foundAsset + '</td></tr>'
+                $("#find").append(newrow);
+            }
+            }); 
+       }
+//            error function(){
+//                alert("processing error occurred");
+//            }
+        
+        
+       
+    </script>
+
+    </body>
+        </html>

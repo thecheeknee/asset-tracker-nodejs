@@ -1,0 +1,284 @@
+/*reset*/
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body#main{
+/*    background: url('images/mainpage_bg.jpg');*/
+    font-family: Roboto, Helvetica, sans-serif;
+    color: #282828;
+    font-weight: bold;
+}
+
+#cantfind{
+font-family: Roboto, sans-serif;
+color: white;
+text-align: center;
+font-size: 60px;
+margin: 160px auto;
+margin-bottom: 0;
+}
+
+#add{
+width: 260px;
+margin: 25px auto;
+padding: 10px 4px 10px 4px;
+border: solid 1px white;
+text-align: center;
+}
+
+nav#header {
+    margin: 20px 10px 0 0;
+    width:100%;
+    height: 40px;
+    text-align: right;
+}
+
+nav#header ul li a:link, 
+nav#header ul li a:visited {
+    color: #de1f36;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px;
+    margin-right: 30px;
+
+}
+
+nav#header ul li a:hover,
+footer nav ul li a:hover{
+    text-decoration: underline;
+    cursor:pointer;
+    color: black;
+}
+
+
+nav#header ul li{
+    display: inline;
+    font-size: 14px;
+    
+    }
+
+
+
+h1,h2,h3{
+    
+    text-align: center;
+}
+
+h1#logo{
+    width: 100%;
+    height: 303px;
+    background: url('images/dsc0387.jpg') top left no-repeat;
+    background-size: 100%;
+    text-indent: -9999px;
+    margin: 0 auto;
+}
+
+
+#container{
+    width: 740px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+input[type="text"]#searchAssetType{
+    font-family: Josefin Sans, sans-serif;
+    color: #777;
+    width: 100%; /*this is taking 100% space of parent element which is form which is 70% width*/
+    padding: 11px;
+    margin: 0px 0 18px;
+    border: solid 1px #ccc;
+    font-size: 18px;
+    font-weight: 200;
+}
+
+input[type="submit"],
+button{
+    display: inline;
+    background-color: transparent;
+    border: solid 1px #aaa;
+    padding: 12px 32px 12px 32px;
+    color: #777;
+    float: right;
+    font-family: Josefin Sans, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background: transparent;
+    cursor: pointer;
+    float: right;
+    border: solid 1px #777;
+    padding: 12px 32px 12px 32px;
+    color: dimgray;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#split{
+ width: 810px;
+    height: auto;
+}
+
+
+
+#infoArea{
+    width: 580px;
+    margin: 20px auto 0;
+    text-align: center;
+    font-family: Roboto, Helvetica, sans-serif;
+}
+h1,h2,h3{
+    text-align: center;
+}
+
+img{
+height: 90px;
+width: auto;
+margin-right: 5px;
+display: inline;
+}
+
+footer{
+    width: 100%;
+}
+
+#response
+{
+    border: 1px solid black;
+    border-collapse: collapse;
+        }
+
+th{
+    padding: 10px;
+    text-align: center;
+    margin-left: 0;
+
+}
+
+td{
+    padding: 10px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+th a{
+        text-decoration: none;
+
+}
+#footerTable{
+    border: none;
+    text-align: left;
+    background: #eee;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-weight: 300;
+    text-decoration: none;
+}
+
+input[type="submit"]#save{
+    float: left;
+}
+
+a:link{
+    font-weight: bold;
+    color: #de1f36;
+}
+a:visited{
+    font-weight: bold;
+    color: #de1f36;
+}
+a:hover{
+    font-weight: bold;
+    color: #777;
+}
+a:active{
+    font-weight: bold;
+    color: #de1f36;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+
+.fa-truck: link {
+    color: #777;
+
+}
+.fa-truck: hover {
+    color: #de1f36;
+
+}
+
+.fa-truck: visited {
+    color: #de1f36;
+}
+.fa-truck: active {
+    color: #777;
+
+}

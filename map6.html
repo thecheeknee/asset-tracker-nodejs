@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Draggable directions</title>
+    <style>
+      
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 60%;
+        float: left;
+        width: 60%;
+        height: 60%;
+      }
+      .panel {
+        height: 100%;
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+          <script src="assets/plugins/jquery.min.js"></script>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: {lat: 20.5937, lng: 78.9629}  // India.
+        });
+
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer({
+          draggable: false,
+          map: map,
+          panel: document.getElementById('right-panel')
+        });
+
+          //call these inside getWayPoints service
+        directionsDisplay.addListener('directions_changed', function() {
+          computeTotalDistance(directionsDisplay.getDirections());
+        });
+          
+        var source = localStorage.getItem("source"),
+            dest = localStorage.getItem("dest");
+          
+        var getUrl ="/getWayPoints/"+source+"/"+dest;
+              $.get(getUrl, function (data) {
+                console.log(data);
+                              displayRoute(source, dest, directionsService,
+            directionsDisplay,data.way_point);
+              });
+;
+      }
+
+      function displayRoute(origin, destination, service, display, way_point) {
+        service.route({
+          origin: origin,
+          destination: destination,
+          waypoints: [{location: way_point}],
+          travelMode: 'DRIVING',
+          avoidTolls: false
+        }, function(response, status) {
+          if (status === 'OK') {
+            display.setDirections(response);
+          } else {
+            alert('Could not display directions due to: ' + status);
+          }
+        });
+      }
+
+      function computeTotalDistance(result) {
+        var total = 0;
+        var myroute = result.routes[0];
+        for (var i = 0; i < myroute.legs.length; i++) {
+          total += myroute.legs[i].distance.value;
+        }
+        total = total / 1000;
+        document.getElementById('total').innerHTML = total + ' km';
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9chq7JKC9asUpgnQJBy6VGXd1-aiyqc0&callback=initMap">
+    </script>
+  </body>
+</html>

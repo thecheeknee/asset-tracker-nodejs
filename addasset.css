@@ -1,0 +1,188 @@
+/*reset*/
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body#main{
+    background: url('images/cargoship2.jpg');
+    font-family: Roboto, Helvetica, sans-serif;
+    color: #f0f0f0;
+}
+
+
+#cantfind{
+font-family: Roboto, sans-serif;
+color: white;
+text-align: center;
+font-size: 60px;
+margin: 160px auto;
+margin-bottom: 0;
+}
+
+#add{
+width: 260px;
+margin: 25px auto;
+padding: 10px 4px 10px 4px;
+border: solid 1px white;
+text-align: center;
+}
+
+h1,h2,h3{
+    
+    text-align: center;
+}
+
+/*
+h1#logo{
+    width: 469px;
+    height: 103px;
+    background: url('images/trackassets.png') top left no-repeat;
+    background-size: 100%;
+    text-indent: -9999px;
+    margin: 0 auto;
+}
+*/
+
+#container{
+    width: 580px;
+    margin: 5px auto;
+    text-align: center;
+}
+
+input[type="text"]#searchAssetType{
+    width: 100%; /*this is taking 100% space of parent element which is form which is 70% width*/
+    padding: 12px;
+    margin: 0px 0 18px;
+    border: solid 1px #ccc;
+    font-size: 16px;
+}
+
+input[type="submit"],
+button{
+    display: inline;
+    background-color: transparent;
+    border: solid 1px #f2f2f2;
+    padding: 14px 32px 14px 32px;
+    color: white;
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background: transparent;
+    cursor: pointer;
+    float: left;
+    border: solid 1px #D3D3D3;
+    padding: 14px 32px 14px 32px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#infoArea{
+    width: 580px;
+    margin: 20px auto 0;
+    text-align: center;
+    font-family: Roboto, Helvetica, sans-serif;
+}
+h1,h2,h3{
+    text-align: center;
+}
+
+#addasset{
+    width: 640px;
+    margin: 5px auto;
+    text-align: left;
+    }
+
+/*styling addasset form*/
+
+fieldset{
+    margin: 10px auto;
+    padding: 40px;
+    border: none;
+}
+
+label{
+    background-color: #f0f0f0;
+    display: block;
+    width: 75%;
+    padding: 8px 3px 5px 10px;
+    font-family: Helvetica, sans-serif;
+    color: #4e2320;
+    font-weight: 300;
+    }
+
+input[type="text"],
+input[type="number"],
+input[type="textarea"],
+select{
+    background: transparent;
+    padding: 2%;
+    margin: 0 0 10px;
+    border: solid 1px white;
+    border-top: none;
+    display: block;
+    width: 73%;
+    font-family: Helevtica, sans-serif;
+    font-size: 14px;
+    color: white;
+        
+}
+
+option {
+    background-color: #777;
+}
+
+/*form ends here*/
+footer{
+    width: 100%;
+}
+
+#response
+{
+    border: 1px solid black;
+    border-collapse: collapse;
+        }
+
+th,td{
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+}
+
+th a{
+        text-decoration: none;
+
+}
+#footerTable{
+    border: none;
+    text-align: left;
+    background: #eee;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-weight: 300;
+    text-decoration: none;
+}
+
+input[type="submit"]#save{
+    float: left;
+}
+
+a:link{
+    color: #EDEDED;
+}
+a:visited{
+    color: #f2f2f2;
+}
+a:hover{
+    color: white;
+}
+a:active{
+    color: #EDEDED;
+}
+

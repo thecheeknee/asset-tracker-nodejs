@@ -1,0 +1,30 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "Node App to manage assets",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thecheeknee/asset-tracker-nodejs.git"
+  },
+  "keywords": [
+    "node",
+    "mongodb",
+    "feedback",
+    "stats"
+  ],
+  "author": "thecheeknee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thecheeknee/asset-tracker-nodejs/issues"
+  },
+  "homepage": "https://github.com/thecheeknee/asset-tracker-nodejs#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "method-override": "^2.3.9"
+  }
+}
