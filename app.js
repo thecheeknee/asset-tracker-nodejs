@@ -1,31 +1,43 @@
 'use strict';
 
 var express = require('express'),
-  bodyParser = require('body-parser'),
-  usersRouter = require('./routes/usersRouter.js'),
+    bodyParser = require('body-parser'),
+    path = require('path'),
+    usersRouter = require('./routes/usersRouter.js'),
+    adminRouter = require('./routes/adminRouter.js'),
+    clientRouter = require('./routes/clientRouter.js'),
+    driverRouter = require('./routes/driverRouter.js'),
 
-  app = express();
+    app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: false
+    extended: false
 }));
 
-app.use(function (req, res, next) {
-  var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress,
-    url = req.url,
-    method = req.method;
-
-  console.log('[DEBUG] New request:');
-  console.log('---> Client IP is: ', ip);
-  console.log('---> Requested url is: ', url);
-  console.log('---> Requested method is: ', method);
-  console.log('');
-
-  next();
+app.use(function(req, res, next) {
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+        url = req.url,
+        method = req.method;
+    next();
 });
 
-app.use(express.static('www'));
-app.use('/api', usersRouter);
+app.use('/', express.static('views'))
+
+app.get('/admin', function(req, res) {
+    res.sendFile(path.join(__dirname + '/views/admin.html'));
+});
+
+app.get('/client', function(req, res) {
+    res.sendFile(path.join(__dirname + '/views/client.html'));
+});
+
+app.get('/driver', function(req, res) {
+    res.sendFile(path.join(__dirname + '/views/driver.html'));
+});
+
+app.use('/owner', adminRouter);
+app.use('/user', clientRouter);
+app.use('/transport', driverRouter);
 
 module.exports = app;

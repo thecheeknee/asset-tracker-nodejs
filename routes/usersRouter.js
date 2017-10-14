@@ -8,6 +8,7 @@ var express = require('express'),
 router.route('/users')
   .get(function(req, res) {
     usersModel.find({}, function(err, users) {
+        console.log('users called');
       if (err) {
         res.send(err);
 
