@@ -1,4 +1,4 @@
-var request_array, asset_array, driver_array, message_array;
+var request_array, asset_array, driver_array, message_array, user_array;
 
 function clearContents(obj,form){
     if( $('#'+obj).find('button.btn-info').find('i.fa').hasClass('fa-minus')){
@@ -319,6 +319,21 @@ function updateAsset(){
 }
 
 $(document).ready(function(){
-    loadData('admin', 'abhinaya');
+    $.get('session/',{type:'admin'})
+        .done(function(data){
+            if(data.status=='failed'){
+                location.pathname='/login';
+            }else{
+                var userid = data.userid;
+                $.post('getuserDetails/',{userid: userid})
+                    .done(function(data){
+                        user_array = data;
+                        //set details across all fields
+                        $('[data-username]').text(user_array.user[0].username);
+                        $('[data-userdetails]').html(user_array.user[0].username +' - ' + user_array.user[0].designation + '<small>'+ user_array.user[0].company +'</small>');
+                    });
+            }
+        });
+    loadData('admin', user_array.user[0].username );
     bindcommands();
 })

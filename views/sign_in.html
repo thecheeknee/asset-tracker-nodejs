@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>main_page</title>
+    <link rel="stylesheet" type="text/css" href="sign_in.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+    <!--[if IE]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+</script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <form action="javascript:validate();" method="post" name="login-form" id= "login-form" class="form-signin">
+                <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
+                <hr class="colorgraph">
+                <br>
+                <div id="verifyusername"></div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Username" required autofocus="" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" required />
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" name="submit" value="Login" type="Submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script>     
+        function validate(){
+            $("#verifyUsername").empty();
+            var loginData =$('#login-form').serialize();
+            $.post('/uservalidate',loginData)
+                .done(function(data){
+                    console.log(data);
+                    if(data.status=='success'){
+                        location.pathname = data.path;
+                    }else{
+                        alert('authentication failed!');
+                    }
+                });
+        }  
+    </script>
+</body>
+
+</html>

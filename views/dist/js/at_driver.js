@@ -97,5 +97,20 @@ function loadData(user_type, user_name, id){
 }
 
 $(document).ready(function(){
-    loadData('driver', 'Somasundarajan',3);
+    $.get('session/',{type:'driver'})
+        .done(function(data){
+            if(data.status=='failed'){
+                location.pathname='/login';
+            }else{
+                var userid = data.userid;
+                $.post('getuserDetails/',{userid: userid})
+                    .done(function(data){
+                        user_array = data;
+                        //set details across all fields
+                        $('[data-username]').text(user_array.user[0].username);
+                        $('[data-userdetails]').html(user_array.user[0].username + '<small>'+ user_array.user[0].company +'</small>');
+                    });
+            }
+        });
+    loadData('driver', user_array.user[0].username,userid);
 });

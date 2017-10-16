@@ -236,6 +236,22 @@ function deleteRequest(req_id){
 }
 
 $(document).ready(function(){
-    loadData('admin', 'abhinaya');
-    bindData();
+    $.get('session/',{type:'client'})
+        .done(function(data){
+            if(data.status=='failed'){
+                location.pathname='/login';
+            }else{
+                var userid = data.userid;
+                $.post('getuserDetails/',{userid: userid})
+                    .done(function(data){
+                        user_array = data;
+                        //set details across all fields
+                        $('[data-username]').text(user_array.user[0].username);
+                        $('[data-userdetails]').html(user_array.user[0].username +' - ' + user_array.user[0].designation + '<small>'+ user_array.user[0].company +'</small>');
+                        loadData('client', user_array.user[0].username);
+                        bindData();
+                    });
+            }
+        });
+    
 });
