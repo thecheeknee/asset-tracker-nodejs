@@ -47,33 +47,53 @@
                 <div class="modal-body">
                     <form name="request_approval" id="request_approval" action="javascript:approveRequest();">
                         <div class="form-group">
-                            <select id="driver" name="driver">
-                                <option value=""></option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="client_id" name="client_id" placeholder="Client ID" readonly>
-                        </div>
-                        <div class="form-group">
                             <input type="text" class="form-control" id="_id" name="_id" placeholder="Request ID" readonly>
                         </div>
-                        <div class="form-group">
+                        <div class="row">
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <label for="driver_id">Assign Driver</label>
+                                <select id="driver_id" name="driver_id" class="img-responsive">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <label for="asset_id">Assign Asset</label>
+                                <select id="asset_id" name="asset_id" class="img-responsive">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                             
+                        <div class="input-group form-group">
+                            <span class="input-group-addon">By</span>
+                            <input type="text" class="form-control" id="client_id" name="client_id" placeholder="Client ID" readonly>
+                        </div>
+                        
+                        <div class="input-group form-group">
+                            <span class="input-group-addon">Type</span>
                             <input type="text" class="form-control" id="assettype" name="assettype" placeholder="Asset type" readonly>
                         </div>
-                        <div class="form-group">
+                        <div class="input-group form-group">
+                            <span class="input-group-addon">To</span>
                             <input type="text" class="form-control" id="destination" name="destination" placeholder="Destination" readonly>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="source" name="source" placeholder="Destination" readonly>
+                        <div class="input-group form-group">
+                            <span class="input-group-addon">From</span>
+                            <input type="text" class="form-control" id="source" name="source" placeholder="Source" readonly>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="destination" name="destination" placeholder="Destination" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label><input type="radio" name="request_status" id="approve" value="approved">Approve</label>
-                        </div>
-                        <div class="form-group">
-                            <label><input type="radio" name="request_status" id="deny" value="cancelled">Approve</label>
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-12">
+                                <div class="form-group col-sm-12 col-xs-6">
+                                    <label><input type="radio" name="request_status" id="approve" value="approved"> Approve</label>
+                                </div>
+                                <div class="form-group col-sm-12 col-xs-6">
+                                    <label><input type="radio" name="request_status" id="deny" value="denied"> Deny</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xs-12">
+                                <div class="clearfix hidden-xs">&nbsp;</div>
+                                <button type="submit" class="btn btn-info btn-block btn-lg">Confirm</button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -175,48 +195,6 @@
 									<li class="footer"><a href="#">See All Messages</a></li>
 								</ul>
 							</li>
-							<!-- Notifications: style can be found in dropdown.less -->
-							<li class="dropdown notifications-menu">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="fa fa-bell-o"></i>
-								<span class="label label-warning">10</span>
-								</a>
-								<ul class="dropdown-menu">
-									<li class="header">You have 10 notifications</li>
-									<li>
-										<!-- inner menu: contains the actual data -->
-										<ul class="menu">
-											<li>
-												<a href="#">
-												<i class="fa fa-users text-aqua"></i> 5 new members joined today
-												</a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-												page and may cause design problems
-												</a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-users text-red"></i> 5 new members joined
-												</a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-shopping-cart text-green"></i> 25 sales made
-												</a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-user text-red"></i> You changed your username
-												</a>
-											</li>
-										</ul>
-									</li>
-									<li class="footer"><a href="#">View all</a></li>
-								</ul>
-							</li>
 							<!-- User Account: style can be found in dropdown.less -->
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -274,8 +252,8 @@
 							</span>
 							</a>
 							<ul class="treeview-menu">
-								<li><a href="pages/UI/general.html"><i class="fa fa-plus"></i> Add Driver</a></li>
-								<li><a href="pages/UI/general.html"><i class="fa fa-list"></i> List Drivers</a></li>
+								<li><a data-view="driver_view" class="new_doc"><i class="fa fa-plus"></i> Add Driver</a></li>
+                                <li><a href="#list_of_drivers"><i class="fa fa-list"></i> List Drivers</a></li>
 							</ul>
 						</li>
 						<li class="treeview">
@@ -287,8 +265,7 @@
 							</span>
 							</a>
 							<ul class="treeview-menu">
-								<li><a href="pages/UI/general.html"><i class="fa fa-plus"></i> Add Asset</a></li>
-								<li><a href="pages/UI/general.html"><i class="fa fa-list"></i> List Assets</a></li>
+								<li><a data-view="asset_view" class="new_doc"><i class="fa fa-plus"></i> Add Asset</a></li>
 							</ul>
 						</li>
 						<li class="treeview">
@@ -300,9 +277,8 @@
 							</span>
 							</a>
 							<ul class="treeview-menu">
-								<li><a href="pages/UI/icons.html"><i class="fa fa-check"></i> Current Request</a></li>
-								<li><a href="pages/UI/general.html"><i class="fa fa-clock-o"></i> Pending Requests</a></li>
-								<li><a href="pages/UI/general.html"><i class="fa fa-archive"></i> Request History</a></li>
+								<li><a href="#requests_approved"><i class="fa fa-check"></i> Active Requests</a></li>
+								<li><a href="#requests_pending"><i class="fa fa-clock-o"></i> Pending Requests</a></li>
 							</ul>
 						</li>
 						<li class="treeview">
@@ -314,8 +290,8 @@
 							</span>
 							</a>
 							<ul class="treeview-menu">
-								<li><a href="pages/UI/general.html"><i class="fa fa-check"></i> Approve client</a></li>
-								<li><a href="pages/UI/icons.html"><i class="fa fa-trash-o"></i> List Clients</a></li>
+								<li><a href="#"><i class="fa fa-check"></i> Approve client</a></li>
+								<li><a href="#"><i class="fa fa-trash-o"></i> List Clients</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -399,7 +375,7 @@
 						<section class="col-lg-7 ">
 							<!-- Custom tabs (Charts with tabs)-->
 							<!-- TO DO List -->
-							<div class="box box-primary">
+							<div class="box box-primary" id="requests_pending">
 								<div class="box-header">
 									<i class="ion ion-clipboard"></i>
 									<h3 class="box-title">Pending Requests</h3>
@@ -431,7 +407,7 @@
 									<button type="button" class="btn btn-default pull-right"><i class="fa fa-trash-o"></i> Cancel All</button>
 								</div>
 							</div>
-                            <div class="box box-primary">
+                            <div class="box box-primary" id="requests_approved">
 								<div class="box-header">
 									<i class="ion ion-clipboard"></i>
 									<h3 class="box-title">Ongoing Requests</h3>
@@ -494,7 +470,7 @@
 									<button type="button" class="btn btn-default pull-right"><i class="fa fa-trash-o"></i> Cancel All</button>
 								</div>
 							</div>
-                            <div class="box box-primary">
+                            <div class="box box-primary" id="list_of_drivers">
 								<div class="box-header">
 									<i class="ion ion-clipboard"></i>
 									<h3 class="box-title">All drivers</h3>
@@ -547,7 +523,6 @@
 								<div class="box-body no-padding">
 									<!--The calendar -->
 									<div class="container-fluid">
-                                        <input type="hidden" id="request_id_forapproval" name="request_id_forapproval">
 										<table class="table">
 											<thead>
 												<tr>
@@ -558,15 +533,19 @@
 											<tbody>
 												<tr>
 													<th scope="row">Type</th>
-													<td data-type="assettype">Cold Storage</td>
+													<td data-type="assettype"></td>
 												</tr>
 												<tr>
 													<th scope="row">Source</th>
-													<td data-type="source">Mumbai</td>
+													<td data-type="source"></td>
 												</tr>
 												<tr>
 													<th scope="row">Destination</th>
-													<td data-type="destination">Hyderabad</td>
+													<td data-type="destination"></td>
+												</tr>
+                                                <tr>
+													<th scope="row">Client</th>
+													<td data-type="client"></td>
 												</tr>
 												<tr>
 													<th scope="row">Status</th>
@@ -575,8 +554,7 @@
 											</tbody>
 										</table>
 										<div class="clearfix"></div>
-										<button class="btn btn-success btn-sm pull-left" id="request_view_approve" data-toggle="modal" data-target="#approve_request_modal">Approve</button>
-										<button class="btn btn-warning btn-sm pull-right" id="request_view_deny">Deny</button>
+										<button class="btn btn-success btn-sm pull-left" id="request_view_approve" data-toggle="modal" data-target="#approve_request_modal">Process</button>
 										<div class="clearfix">&nbsp;</div>
 										<div style="height: 20px;"></div>
 									</div>
@@ -591,7 +569,7 @@
 									<h3 class="box-title">Driver Details</h3>
 									<!-- tools box -->
 									<div class="pull-right box-tools">
-										<button type="button" class="btn btn-info btn-sm" data-widget="collapse"><i class="fa fa-plus"></i>
+										<button type="button" class="btn btn-info btn-sm" data-widget="collapse" onclick="clearContents('driver_view','driver_form');"><i class="fa fa-plus"></i>
 										</button>
 									</div>
 									<!-- /. tools -->
@@ -600,9 +578,8 @@
 								<div class="box-body no-padding">
 									<!--The driver -->
 									<div class="container-fluid">
-										<form class="form-horizontal" id="driver_form" name="driver_form" method="post" action="javascript:addDriver();">
-                                            <input type="hidden" id="_id" name="_id" />
-                                            <input type="hidden" id="usertype" name="usertype" value="driver" />
+										<form class="form-horizontal" id="driver_form" name="driver_form" method="post" action="javascript:driver();">
+                                            <input type="hidden" id="id" name="id" />
 											<div class="form-group">
 												<label for="username" class="col-sm-4 control-label">Name</label>
 												<div class="col-sm-7">
@@ -618,7 +595,7 @@
                                             <div class="form-group">
 												<label for="userpassword" class="col-sm-4 control-label">Password</label>
 												<div class="col-sm-7">
-													<input type="number" class="form-control" id="userpassword" name="usercontact" placeholder="4 digit key">
+													<input type="number" class="form-control" id="userpassword" name="userpassword" placeholder="4 digit key">
 												</div>
 											</div>
 											<div class="form-group">
@@ -656,7 +633,7 @@
 									<h3 class="box-title">Asset Details</h3>
 									<!-- tools box -->
 									<div class="pull-right box-tools">
-										<button type="button" class="btn btn-info btn-sm" data-widget="collapse"><i class="fa fa-plus"></i>
+										<button type="button" class="btn btn-info btn-sm" data-widget="collapse" onclick="clearContents('asset_view','asset_form');"><i class="fa fa-plus"></i>
 										</button>
 									</div>
 									<!-- /. tools -->
@@ -665,45 +642,45 @@
 								<div class="box-body no-padding">
 									<!--The driver -->
 									<div class="container-fluid">
-										<form class="form-horizontal" id="asset_form" name="asset_form" method="post" onSubmit="javascript:asset();">
+										<form class="form-horizontal" id="asset_form" name="asset_form" method="post" action="javascript:asset();">
 											<div class="form-group">
 												<div class="full-width">
                                                     <div class="col-xs-3">
                                                         <label class="asset_type_image" for="mini_truck">
                                                             <img src="dist/img/asset-mini-truck.png" class="center-block img-responsive"/>
-                                                            <input type="radio" name="asset_type_img" id="mini_truck" value="mini truck" />
+                                                            <input type="radio" name="asset_type" id="mini_truck" value="mini truck" />
                                                         </label>
                                                     </div>
                                                     <div class="col-xs-3">
                                                         <label class="asset_type_image" for="large_truck">
                                                             <img src="dist/img/asset-large-truck.png" class="center-block img-responsive"/>
-                                                            <input type="radio" name="asset_type_img" id="large_truck" value="large truck" />
+                                                            <input type="radio" name="asset_type" id="large_truck" value="large truck" />
                                                         </label>
                                                     </div>
                                                     <div class="col-xs-3">
                                                         <label class="asset_type_image" for="cold_transport">
                                                             <img src="dist/img/asset-cold-storage.png" class="center-block img-responsive"/>
-                                                            <input type="radio" name="asset_type_img" id="cold_transport" value="cold transport" />
+                                                            <input type="radio" name="asset_type" id="cold_transport" value="cold transport" />
                                                         </label>
                                                     </div>
                                                     <div class="col-xs-3">
                                                         <label class="asset_type_image" for="shipping">
                                                             <img src="dist/img/asset-shipping.jpg" class="center-block img-responsive"/>
-                                                            <input type="radio" name="asset_type_img" id="shipping" value="shipping container" />
+                                                            <input type="radio" name="asset_type" id="shipping" value="shipping container" />
                                                         </label>
                                                     </div>
                                                 </div>
 											</div>
                                             <div class="form-group">
-												<label for="_id" class="col-sm-4 control-label">Asset ID</label>
+												<label for="id" class="col-sm-4 control-label">Asset ID</label>
 												<div class="col-sm-7">
-													<input type="text" class="form-control" readonly id="_id" name="_id" placeholder="Asset id">
+													<input type="text" class="form-control" readonly id="id" name="id" placeholder="Asset id">
 												</div>
 											</div>
 											<div class="form-group">
 												<label for="assettype" class="col-sm-4 control-label">Type</label>
 												<div class="col-sm-7">
-													<input type="text" class="form-control" readonly id="assettype" name="assettype" placeholder="Asset Type">
+													<div id="asset_type_text" name="asset_type_text" class="fakebox"></div>
 												</div>
 											</div>
                                             <div class="form-group">
@@ -719,15 +696,9 @@
 												</div>
 											</div>
                                             <div class="form-group">
-												<label for="assignstatus" class="col-sm-4 control-label">Status</label>
+												<label for="assignedStatus" class="col-sm-4 control-label">Status</label>
 												<div class="col-sm-7">
-                                                    <input type="hidden" id="assigned" name="assigned" value="false">
-													<div class="checkbox">
-                                                      <label>
-                                                        <input type="checkbox" id="assignstatus" name="assignstatus" readonly>
-                                                        Assigned
-                                                      </label>
-                                                    </div>
+                                                    <div id="assignedStatus" name="assignedStatus" class="fakebox"></div>
 												</div>
 											</div>
                                             <div class="clearfix">&nbsp;</div>
@@ -736,7 +707,7 @@
 													<button type="submit" class="btn btn-default btn-block">Save</button>
 												</div>
                                                 <div class="col-sm-4">
-													<button type="button" class="btn btn-warning btn-block">delete</button>
+													<button type="button" id="delete_asset" class="btn btn-warning btn-block">delete</button>
 												</div>
 											</div>
 										</form>

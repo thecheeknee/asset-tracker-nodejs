@@ -1,1 +1,4 @@
-{"asset_type_img":"large truck","source":"Mumbai","destination":"Hyderabad","assettype":"large truck","request_status":"pending","client_id":"abhinaya","_id":"YTbzikQcM1YlZquW"}
+{"asset_type_img":"shipping container","request_status":"approved","driver_id":"3","asset_id":"3","source":"Chennai","destination":"Kolkata","client_id":"abhinaya","current_location":"Vijaywada","location_map_id":"2syCkPkfMPgLE0P","message_id":"","_id":"SFeSeyxE4HwGdYMK"}
+{"asset_type_img":"mini truck","request_status":"denied","source":"Mumbai","destination":"Hyderabad","client_id":"abhinaya","message_id":"","_id":"ZhHgnT9rRjF6lYIR"}
+{"asset_type_img":"shipping container","source":"Chennai","destination":"Mumbai","assettype":"shipping container","request_status":"pending","client_id":"abhinaya","_id":"sCRsFpvFKfZb4lEL"}
+{"asset_type_img":"cold transport","source":"Hyderabad","destination":"Pune","assettype":"cold transport","request_status":"pending","client_id":"abhinaya","_id":"vO2INAdeu6fuC7w9"}

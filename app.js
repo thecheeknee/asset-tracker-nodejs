@@ -10,6 +10,13 @@ var express = require('express'),
 
     app = express();
 
+var session = require('express-session');
+app.use(session({
+    secret: '2C44-4D44-WppQ38S',
+    resave: true,
+    saveUninitialized: true
+}));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false

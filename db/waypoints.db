@@ -1,0 +1,6 @@
+{"source":"Pune","destination":"Mumbai","waypoints":["Lonavla","Karjat","Thane"],"_id":1}
+{"source":"Chennai","destination":"Kolkata","waypoints":["Vijaywada","Vishakapatnam","Bhubhaneshwar"],"_id":2}
+{"source":"Hyderabad","destination":"Delhi","waypoints":["Nagpur","Lalitpur","Agra"],"_id":3}
+{"source":"Chennai","destination":"Delhi","waypoints":["Warangal","Bhopal","Mathura"],"_id":4}
+{"source":"Bangalore","destination":"Mumbai","waypoints":["Hubballi","Kolhapur","Pune"],"_id":5}
+{"source":"Hyderabad","destination":"Pune","waypoints":["Gulbarga","Solapur","Gadewadi"],"_id":6}

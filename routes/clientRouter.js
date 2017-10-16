@@ -34,6 +34,20 @@ router.route('/getAssets').get(function(req, res){
     });
 });
 
+router.route('/getMessages').get(function(req, res){
+    //get list of all working assets
+    var userid = req.query.userid;
+    console.log(userid);
+    messageDb.find({to:userid}, function(err, messages) {
+        if (err) {
+            res.send(err);
+            return;
+        }
+
+        res.json(messages);
+    });
+});
+
 router.route('/addRequest').post(function(req, res){
     var postData = req.body,
       validationError = {
@@ -64,8 +78,54 @@ router.route('/addRequest').post(function(req, res){
         return;
       }
 
-      res.json(newRequest);
+      res.json({'status':'success','data':newRequest});
     });
 });
+
+router.route('/delRequest').post(function(req,res){
+    var postData = req.body,
+        validationError = {
+            type: 'Validation Error',
+            message:''
+        };
+    
+    requestDb.findOne({ _id: postData.id },function(err,delReq){
+        if(err){
+            res.send(err);
+            return
+        }
+        var resultJson = {
+            status:'',
+        }
+        
+        if(delReq==null || delReq.length==0){
+            res.json({'status':'failed','message':'not found'});
+        }else if(delReq.request_status=='approved'){
+            res.json({'status':'failed','message':'approved request'});
+        }else{
+            requestDb.remove({ _id: delReq._id }, {}, function (err, numRemoved) {
+                res.json({'status':'success','message':'deleted','id':delReq._id});
+            });
+        }
+        
+    })
+});
+
+router.route('/trackLocation').post(function(req,res){
+    var postData = req.body,
+        validationError = {
+            type: 'Validation Error',
+            message:''
+        };
+    
+    locationDb.findOne({ request_id: postData.id },function(err,locationmap){
+        if(err){
+            res.send(err);
+            return
+        }
+        res.json({'status':'success','data':locationmap});
+    });
+});
+
 
 module.exports = router;

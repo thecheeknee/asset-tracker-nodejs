@@ -9,3 +9,5 @@
 .asset_type_image{background:#ffffff; max-width:150px; margin:0 auto; cursor:pointer; border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; overflow:hidden;}
 .asset_type_image img{border:1px solid #ffffff;}
 .asset_type_image input[type=radio]{display:none;}
+.fakebox {padding: 6px 12px; margin: 0px; text-transform: uppercase; border: 1px solid #eee; background: #eeeeee; color: #333333; height: 34px; }
+select#waypoint_check{padding: 6px 10px; margin: 0 15px; border: 1px solid #ccc;}

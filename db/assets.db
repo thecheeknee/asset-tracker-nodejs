@@ -1,1 +1,4 @@
-{"asset_type_img":"cold transport","assettype":"cold transport","source":"Hyderabad","destination":"Mumbai","assigned":"false","assignstatus":"on","_id":"YzzNvyGBO6eP7zoS"}
+{"asset_id":2,"assetInfo":{"asset_type":"cold transport","id":"","source":"Hyderabad","destination":"Kolkata"},"assignedStatus":false,"requestId":"","driverId":"","_id":"28Rrl87IWLwG9ViU"}
+{"asset_id":1,"assetInfo":{"asset_type":"cold transport","id":"1","source":"Hyderabad","destination":"Kolkata"},"assignedStatus":false,"requestId":"","driverId":"","_id":"7vowwkesnZRRaYb4"}
+{"asset_id":0,"assetInfo":{"asset_type":"mini truck","id":"0","source":"Mumbai","destination":"Kolkata"},"assignedStatus":false,"requestId":"","driverId":"","_id":"YSnwSsI25ulqLTlS"}
+{"asset_id":3,"assetInfo":{"asset_type":"shipping container","id":"","source":"Hyderabad","destination":"Kolkata"},"assignedStatus":true,"requestId":"SFeSeyxE4HwGdYMK","driverId":"3","_id":"eAandyMhNPkIe6Vi"}
